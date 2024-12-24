@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODOアプリ</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>TODOアプリ</h1>
+      </header>
+      <section>
+        <h2>新規作成</h2>
+        <div class="todo-items">
+          <div class="todo-item">
+            <label for="new-todo-name">TODO名</label>
+            <input type="text" id="new-todo-name" placeholder="TODO名を入力" />
+          </div>
+          <div class="todo-item">
+            <label for="new-person">担当者</label>
+            <input type="text" id="new-person" placeholder="担当者をを入力" />
+          </div>
+          <div class="todo-item">
+            <label for="new-deadline">締切</label>
+            <input type="date" id="new-deadline" />
+          </div>
+          <div class="todo-buton">
+            <button id="button-register">登録</button>
+          </div>
+        </div>
+      </section>
+      <div>
+        <h2>TODO一覧</h2>
+        <table aria-label="TODO一覧">
+          <thead>
+            <tr>
+              <th>TODO名</th>
+              <th>担当者</th>
+              <th>期限</th>
+            </tr>
+            <tr>
+              <th>掃除</th>
+              <th>Yuta</th>
+              <th>2024.12.23</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </main>
+
+    <script src="./assets/script/script.js" defer></script>
+  </body>
+</html>
