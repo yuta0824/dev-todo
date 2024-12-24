@@ -1,7 +1,7 @@
 /**
  * 変数の定義
  */
-const todoList = [];
+let todoList = [];
 const tableBodyElement = document.querySelector("#todo-list");
 const buttonRegister = document.querySelector("#button-register");
 const filterInputElement = document.querySelector("#filter");
@@ -37,6 +37,17 @@ const deleteTodoList = () => {
 };
 
 /**
+ * TODOを削除する関数
+ *
+ * @param {number} todoId - 削除するTODOのID
+ * @returns {void}
+ */
+const deleteTodo = (todoId) => {
+  todoList = todoList.filter((todo) => todoId !== todo.todoId);
+  renderTodoListElement(["border", "border-gray-300", "px-4", "py-2"]);
+};
+
+/**
  * TODOの一覧を描写する関数。
  * フィルター機能で絞り込んだTODOの一覧を描写する。
  *
@@ -64,18 +75,14 @@ const renderTodoListElement = (classes) => {
       deadlineElement.textContent = todo.deadline;
       deadlineElement.classList.add(...classes);
 
-      // ここに削除ボタンを追加
-      // ボタンの側
-      // ボタンのイベント
-      // 削除ボタンがクリックされたときに、自分のidと一致しないものだけ、表示することによって、関節的に削除ボタンの機能を果たす
-      // 再起処理で、自分を呼び出すことで、削除ボタンを押したときに、再度、削除ボタンを表示する
       const deleteButtonElement = document.createElement("td");
       deleteButtonElement.classList.add(...classes, "text-center");
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "削除";
       deleteButton.classList.add("border", "border-gray-300", "px-4", "py-1");
+
       deleteButton.addEventListener("click", () => {
-        // 削除ボタンがクリックされたときに、自分のidと一致しないものだけ、表示することによって、関節的に削除ボタンの機能を果たす
+        deleteTodo(todo.todoId);
       });
 
       deleteButtonElement.appendChild(deleteButton);
