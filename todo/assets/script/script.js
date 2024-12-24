@@ -1,9 +1,11 @@
 /**
- * 変数の初期化
+ * 変数の定義
  */
 const todoList = [];
 const tableBodyElement = document.querySelector("#todo-list");
 const buttonRegister = document.querySelector("#button-register");
+const filterInputElement = document.querySelector("#filter");
+let filterWord = "";
 
 /**
  * 入力されたTODOを取得する関数
@@ -34,32 +36,37 @@ const deleteTodoList = () => {
 };
 
 /**
- * TODOの一覧を描写する関数
+ * TODOの一覧を描写する関数。
+ * フィルター機能で絞り込んだTODOの一覧を描写する。
  *
  * @param {string[]} classes - クラス属性の配列
  * @returns {void}
  */
 const renderTodoListElement = (classes) => {
-  todoList.forEach((todo) => {
-    const todoNameElement = document.createElement("td");
-    todoNameElement.textContent = todo.todoName;
-    todoNameElement.classList.add(...classes);
+  deleteTodoList();
 
-    const personElement = document.createElement("td");
-    personElement.textContent = todo.person;
-    personElement.classList.add(...classes);
+  todoList
+    .filter((todo) => todo.todoName.includes(filterWord))
+    .forEach((todo) => {
+      const todoNameElement = document.createElement("td");
+      todoNameElement.textContent = todo.todoName;
+      todoNameElement.classList.add(...classes);
 
-    const deadlineElement = document.createElement("td");
-    deadlineElement.textContent = todo.deadline;
-    deadlineElement.classList.add(...classes);
+      const personElement = document.createElement("td");
+      personElement.textContent = todo.person;
+      personElement.classList.add(...classes);
 
-    const trElement = document.createElement("tr");
-    trElement.appendChild(todoNameElement);
-    trElement.appendChild(personElement);
-    trElement.appendChild(deadlineElement);
+      const deadlineElement = document.createElement("td");
+      deadlineElement.textContent = todo.deadline;
+      deadlineElement.classList.add(...classes);
 
-    tableBodyElement.appendChild(trElement);
-  });
+      const trElement = document.createElement("tr");
+      trElement.appendChild(todoNameElement);
+      trElement.appendChild(personElement);
+      trElement.appendChild(deadlineElement);
+
+      tableBodyElement.appendChild(trElement);
+    });
 };
 
 /**
@@ -68,7 +75,14 @@ const renderTodoListElement = (classes) => {
  * @returns {void}
  */
 buttonRegister.addEventListener("click", () => {
-  deleteTodoList();
   registerNewTodo();
+  renderTodoListElement(["border", "border-gray-300", "px-4", "py-2"]);
+});
+
+/**
+ * フィルター
+ */
+filterInputElement.addEventListener("input", () => {
+  filterWord = filterInputElement.value;
   renderTodoListElement(["border", "border-gray-300", "px-4", "py-2"]);
 });
