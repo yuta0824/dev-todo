@@ -13,10 +13,12 @@ let filterWord = "";
  * @returns {void}
  */
 const registerNewTodo = () => {
+  // 入力されたTODOの情報を取得
   const newTodoName = document.querySelector("#new-todo-name");
   const newPerson = document.querySelector("#new-person");
   const newDeadline = document.querySelector("#new-deadline");
 
+  // 取得したTODOの情報をTODOリストに追加
   todoList.push({
     todoId: Date.now(),
     todoName: newTodoName.value,
@@ -60,32 +62,39 @@ const renderTodoListElement = (classes) => {
   todoList
     .filter(
       (todo) =>
+        // 絞り込み機能で絞り込んだTODOの一覧を描写する
         todo.todoName.includes(filterWord) || todo.person.includes(filterWord)
     )
     .forEach((todo) => {
+      // TODO名に関するtdタグを作成
       const todoNameElement = document.createElement("td");
       todoNameElement.textContent = todo.todoName;
       todoNameElement.classList.add(...classes);
 
+      // 担当者に関するtdタグを作成
       const personElement = document.createElement("td");
       personElement.textContent = todo.person;
       personElement.classList.add(...classes);
 
+      // 期限に関するtdタグを作成
       const deadlineElement = document.createElement("td");
       deadlineElement.textContent = todo.deadline;
       deadlineElement.classList.add(...classes);
 
+      // 削除ボタンに関するtdタグを作成
       const deleteButtonElement = document.createElement("td");
       deleteButtonElement.classList.add(...classes, "text-center");
+      deleteButtonElement.appendChild(deleteButton);
+
+      // 削除ボタンを作成
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "削除";
       deleteButton.classList.add("border", "border-gray-300", "px-4", "py-1");
-
       deleteButton.addEventListener("click", () => {
         deleteTodo(todo.todoId);
       });
 
-      deleteButtonElement.appendChild(deleteButton);
+      // trタグを作成
       const trElement = document.createElement("tr");
       trElement.appendChild(todoNameElement);
       trElement.appendChild(personElement);
