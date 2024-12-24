@@ -14,7 +14,12 @@ buttonRegister.addEventListener("click", () => {
   };
 
   todoList.push(newTodoObject);
-  const tableElement = document.querySelector("#todo-list");
+
+  const tableBodyElement = document.querySelector("#todo-list");
+
+  while (tableBodyElement.firstChild) {
+    tableBodyElement.firstChild.remove();
+  }
 
   todoList.forEach((todo) => {
     const todoNameElement = document.createElement("td");
@@ -34,7 +39,6 @@ buttonRegister.addEventListener("click", () => {
     trElement.appendChild(personElement);
     trElement.appendChild(deadlineElement);
 
-    tableElement.appendChild(trElement);
-    console.log(tableElement);
+    tableBodyElement.appendChild(trElement);
   });
 });
