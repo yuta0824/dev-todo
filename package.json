@@ -6,7 +6,7 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:css": "npx stylelint \"**/*.css\"",
     "lint:js": "npx eslint \"**/*.js\"",
-    "build:tailwind": "npx tailwindcss -i ./src/css/style.css -o ./todo/assets/css/style.css --watch"
+    "build:tailwind": "npx tailwindcss -i ./src/css/style.css -o ./docs/assets/css/style.css --watch"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
