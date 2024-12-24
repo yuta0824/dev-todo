@@ -1,4 +1,22 @@
 /**
+ * 最大幅に基づいてviewport設定を切り替える関数。
+ * @function
+ * @param {number} maxWidth - viewportを固定する際の最大幅
+ */
+const switchViewport = (maxWidth) => {
+  const viewport = document.querySelector('meta[name="viewport"]');
+  const value =
+    window.outerWidth > maxWidth
+      ? "width=device-width,initial-scale=1"
+      : `width=${maxWidth}`;
+  if (viewport.getAttribute("content") !== value) {
+    viewport.setAttribute("content", value);
+  }
+};
+addEventListener("resize", () => switchViewport(600));
+switchViewport(600);
+
+/**
  * 変数の定義
  */
 let todoList = [];
@@ -46,7 +64,7 @@ const deleteTodoList = () => {
  */
 const deleteTodo = (todoId) => {
   todoList = todoList.filter((todo) => todoId !== todo.todoId);
-  renderTodoListElement(["border", "border-gray-300", "px-4", "py-2"]);
+  renderTodoListElement(["border", "border-gray-300", "px-2", "py-2"]);
 };
 
 /**
@@ -89,7 +107,7 @@ const renderTodoListElement = (classes) => {
         "rounded",
         "bg-red-600",
         "border-gray-300",
-        "px-4",
+        "px-2",
         "py-1"
       );
       deleteButton.addEventListener("click", () => {
@@ -118,7 +136,7 @@ const renderTodoListElement = (classes) => {
  */
 buttonRegister.addEventListener("click", () => {
   registerNewTodo();
-  renderTodoListElement(["border", "border-gray-300", "px-4", "py-2"]);
+  renderTodoListElement(["border", "border-gray-300", "px-2", "py-2"]);
 });
 
 /**
@@ -128,5 +146,5 @@ buttonRegister.addEventListener("click", () => {
  */
 filterInputElement.addEventListener("input", () => {
   filterWord = filterInputElement.value;
-  renderTodoListElement(["border", "border-gray-300", "px-4", "py-2"]);
+  renderTodoListElement(["border", "border-gray-300", "px-2", "py-2"]);
 });
