@@ -46,7 +46,10 @@ const renderTodoListElement = (classes) => {
   deleteTodoList();
 
   todoList
-    .filter((todo) => todo.todoName.includes(filterWord))
+    .filter(
+      (todo) =>
+        todo.todoName.includes(filterWord) || todo.person.includes(filterWord)
+    )
     .forEach((todo) => {
       const todoNameElement = document.createElement("td");
       todoNameElement.textContent = todo.todoName;
