@@ -80,7 +80,9 @@ buttonRegister.addEventListener("click", () => {
 });
 
 /**
- * フィルター
+ * 絞り込み機能に入力された文字列が変更されたときの処理
+ *
+ * @returns {void}
  */
 filterInputElement.addEventListener("input", () => {
   filterWord = filterInputElement.value;
