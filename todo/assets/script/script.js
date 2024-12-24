@@ -18,6 +18,7 @@ const registerNewTodo = () => {
   const newDeadline = document.querySelector("#new-deadline");
 
   todoList.push({
+    todoId: Date.now(),
     todoName: newTodoName.value,
     person: newPerson.value,
     deadline: newDeadline.value,
@@ -63,11 +64,26 @@ const renderTodoListElement = (classes) => {
       deadlineElement.textContent = todo.deadline;
       deadlineElement.classList.add(...classes);
 
+      // ここに削除ボタンを追加
+      // ボタンの側
+      // ボタンのイベント
+      // 削除ボタンがクリックされたときに、自分のidと一致しないものだけ、表示することによって、関節的に削除ボタンの機能を果たす
+      // 再起処理で、自分を呼び出すことで、削除ボタンを押したときに、再度、削除ボタンを表示する
+      const deleteButtonElement = document.createElement("td");
+      deleteButtonElement.classList.add(...classes, "text-center");
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "削除";
+      deleteButton.classList.add("border", "border-gray-300", "px-4", "py-1");
+      deleteButton.addEventListener("click", () => {
+        // 削除ボタンがクリックされたときに、自分のidと一致しないものだけ、表示することによって、関節的に削除ボタンの機能を果たす
+      });
+
+      deleteButtonElement.appendChild(deleteButton);
       const trElement = document.createElement("tr");
       trElement.appendChild(todoNameElement);
       trElement.appendChild(personElement);
       trElement.appendChild(deadlineElement);
-
+      trElement.appendChild(deleteButtonElement);
       tableBodyElement.appendChild(trElement);
     });
 };
