@@ -4,50 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODOアプリ</title>
-    <!-- <link rel="stylesheet" href="./assets/css/style.css" /> -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <main>
-      <header>
-        <h1 class="text-3xl font-bold underline">TODOアプリ</h1>
+      <header class="border-b py-4">
+        <h1 class="px-6 text-2xl font-bold">TODOアプリ</h1>
       </header>
-      <section>
-        <h2>新規作成</h2>
-        <div class="todo-items">
-          <div class="todo-item">
-            <label for="new-todo-name">TODO名</label>
-            <input type="text" id="new-todo-name" placeholder="TODO名を入力" />
-          </div>
-          <div class="todo-item">
-            <label for="new-person">担当者</label>
-            <input type="text" id="new-person" placeholder="担当者をを入力" />
-          </div>
-          <div class="todo-item">
-            <label for="new-deadline">締切</label>
-            <input type="date" id="new-deadline" />
-          </div>
-          <div class="todo-buton">
-            <button id="button-register">登録</button>
+      <section class="py-10 px-8">
+        <h2 class="text-xl font-bold">新規作成</h2>
+        <div class="grid mt-4 grid-cols-[100px_1fr] gap-4 items-center">
+          <label for="new-todo-name">TODO名</label>
+          <input
+            class="border p-4"
+            type="text"
+            id="new-todo-name"
+            placeholder="TODO名を入力"
+          />
+          <label for="new-person">担当者</label>
+          <input
+            class="border p-4"
+            type="text"
+            id="new-person"
+            placeholder="担当者をを入力"
+          />
+          <label for="new-deadline">締切</label>
+          <input class="border p-4" type="date" id="new-deadline" />
+          <div>
+            <button class="py-2 px-5 bg-black text-white" id="button-register">
+              登録
+            </button>
           </div>
         </div>
       </section>
-      <div>
-        <h2>TODO一覧</h2>
-        <table aria-label="TODO一覧">
+      <section class="py-10 px-8">
+        <h2 class="text-xl font-bold">TODO一覧</h2>
+        <table
+          id="todo-list"
+          class="mt-4 min-w-full border-collapse border border-gray-200"
+          aria-label="TODO一覧"
+        >
           <thead>
             <tr>
-              <th>TODO名</th>
-              <th>担当者</th>
-              <th>期限</th>
-            </tr>
-            <tr>
-              <th>掃除</th>
-              <th>Yuta</th>
-              <th>2024.12.23</th>
+              <th class="border border-gray-200 px-4 py-2">TODO名</th>
+              <th class="border border-gray-200 px-4 py-2">担当者</th>
+              <th class="border border-gray-200 px-4 py-2">期限</th>
             </tr>
           </thead>
         </table>
-      </div>
+      </section>
     </main>
 
     <script src="./assets/script/script.js" defer></script>
