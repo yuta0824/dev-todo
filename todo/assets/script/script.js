@@ -81,18 +81,25 @@ const renderTodoListElement = (classes) => {
       deadlineElement.textContent = todo.deadline;
       deadlineElement.classList.add(...classes);
 
+      // 削除ボタンを作成
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "削除";
+      deleteButton.classList.add(
+        "text-white",
+        "rounded",
+        "bg-red-600",
+        "border-gray-300",
+        "px-4",
+        "py-1"
+      );
+      deleteButton.addEventListener("click", () => {
+        deleteTodo(todo.todoId);
+      });
+
       // 削除ボタンに関するtdタグを作成
       const deleteButtonElement = document.createElement("td");
       deleteButtonElement.classList.add(...classes, "text-center");
       deleteButtonElement.appendChild(deleteButton);
-
-      // 削除ボタンを作成
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "削除";
-      deleteButton.classList.add("border", "border-gray-300", "px-4", "py-1");
-      deleteButton.addEventListener("click", () => {
-        deleteTodo(todo.todoId);
-      });
 
       // trタグを作成
       const trElement = document.createElement("tr");
