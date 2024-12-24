@@ -5,7 +5,8 @@
   "scripts": {
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:css": "npx stylelint \"**/*.css\"",
-    "lint:js": "npx eslint \"**/*.js\""
+    "lint:js": "npx eslint \"**/*.js\"",
+    "build:tailwind": "npx tailwindcss -i ./src/css/style.css -o ./todo/assets/css/style.css --watch"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
@@ -17,6 +18,7 @@
     "stylelint": "^16.10.0",
     "stylelint-config-recess-order": "^5.1.1",
     "stylelint-config-standard": "^36.0.1",
-    "stylelint-config-standard-scss": "^13.1.0"
+    "stylelint-config-standard-scss": "^13.1.0",
+    "tailwindcss": "^3.4.17"
   }
 }
