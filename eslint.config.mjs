@@ -18,4 +18,10 @@ export default [
       eqeqeq: ["error", "always"], // === と !== の使用を強制
     },
   },
+  {
+    type: "setting",
+    settings: {
+      eslintIgnore: ["webpack.config.js"],
+    },
+  },
 ];
