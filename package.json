@@ -7,9 +7,9 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:css": "npx stylelint \"**/*.css\"",
     "lint:js": "npx eslint \"**/*.js\"",
-    "build": "npx webpack --mode production",
-    "build:dev": "npx webpack",
-    "dev": "npx webpack serve --mode development"
+    "start:dev": "npx webpack serve --mode development",
+    "build:prod": "npx webpack --mode production",
+    "build:dev": "npx webpack --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -30,7 +30,6 @@
     "stylelint-config-recess-order": "^5.1.1",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
-    "tailwindcss": "^3.4.17",
     "webpack-dev-server": "5.2.0"
   },
   "dependencies": {
